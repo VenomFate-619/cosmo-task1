@@ -2,16 +2,7 @@ import InlineTextEditor from "../inline-text-editor";
 import trash from "../../assets/trash.svg";
 import plus from "../../assets/plus.svg";
 import { typesOfData } from "../../constant";
-
-type MyType = {
-  [key: string]: {
-    type: typesOfData;
-    required: boolean;
-    name: string;
-    childIds: string[];
-    parentId: string;
-  };
-};
+import { fieldType } from "../../types";
 
 interface FieldProps {
   nameOfField: string;
@@ -24,7 +15,7 @@ interface FieldProps {
   changeType: (id: string, modifiedType: typesOfData) => void;
   addFieldInObject: (id: string, parentId: string) => void;
   parentId: string;
-  schemaData: MyType;
+  schemaData: fieldType;
   deleteField: (id: string) => void;
   updateField: (id: string, data: any) => void;
 }

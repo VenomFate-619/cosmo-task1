@@ -4,19 +4,10 @@ import { typesOfData } from "../../constant";
 import Field from "../field";
 import clone from "just-clone";
 import React from "react";
+import { fieldType } from "../../types"; 
 
-type MyType = {
-  [key: string]: {
-    type: typesOfData;
-    required: boolean;
-    name: string;
-    childIds: string[];
-    parentId: string;
-  };
-};
-
-function transformObject(obj:MyType) {
-  const result :any= {};
+function transformObject(obj: fieldType) {
+  const result: any = {};
   // console.log(obj);
   for (const key in obj) {
     let value = obj[key];
@@ -26,7 +17,7 @@ function transformObject(obj:MyType) {
     } else {
       transformedValue = { ...obj[key], id: key };
       for (let child of value.childIds) {
-        let xyz:any = {};
+        let xyz: any = {};
         xyz[child] = obj[child];
         transformedValue = {
           ...transformedValue,
@@ -50,7 +41,7 @@ const initialData = (id: string) => {
 };
 
 const Fields = () => {
-  const [schema, setSchema] = useState<MyType>({});
+  const [schema, setSchema] = useState<fieldType>({});
   const onAdd = () => {
     let newSchema = clone(schema);
     newSchema[Date.now()] = initialData("");
