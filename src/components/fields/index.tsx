@@ -15,21 +15,28 @@ type MyType = {
   };
 };
 
-function parseData(data: MyType) {
-  let ans: any = {};
-  for (let item in data) {
-    if (data[item].childIds.length === 0) {
-      ans[data[item].name] = { ...data[item], id: item };
+function transformObject(obj:MyType) {
+  const result :any= {};
+  // console.log(obj);
+  for (const key in obj) {
+    let value = obj[key];
+    let transformedValue = {};
+    if (value.type !== "object") {
+      transformedValue = { ...obj[key], id: key };
     } else {
-      ans[data[item].name] = { ...data[item], id: item };
-      ans[data[item].name] = {
-        ...ans[data[item].name],
-        ...parseData(data[data[item].childIds[0]]),
-      };
+      transformedValue = { ...obj[key], id: key };
+      for (let child of value.childIds) {
+        let xyz:any = {};
+        xyz[child] = obj[child];
+        transformedValue = {
+          ...transformedValue,
+          ...transformObject(xyz),
+        };
+      }
     }
+    result[value.name] = transformedValue;
   }
-
-  return ans;
+  return result;
 }
 
 const initialData = (id: string) => {
