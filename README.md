@@ -12,9 +12,7 @@
  - [x] Users should be able to add nested fields to object type.
  - [x] There should be a save button which console the updated data.(trying to display as javascript object , little bit diffcult , if fails i will display the state directly)
 
-# Video preview
 
-https://drive.google.com/file/d/1j4MxWb2Xh3iryHpbuGC4eTU1j6k8c2eT/view?usp=share_link
 
 
 # Nested object
