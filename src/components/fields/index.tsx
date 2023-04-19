@@ -117,8 +117,7 @@ const Fields = () => {
       <br />
       <button
         className="px-6 py-3 mt-4  text-gray-600 w-fit m-auto bg-[#c6c7c9] rounded-md hover:bg-gray-200 hover:text-gray-800"
-        onClick={() => console.log(parseData(schema))
-        }
+        onClick={() => console.log(transformObject(schema))}
       >
         Parse
       </button>
