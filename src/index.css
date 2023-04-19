@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.line::before,
+.line::after {
+  content: "";
+  position: absolute;
+  border-top: 2px solid black;
+  width: 20px;
+  height: 10px;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.line::before {
+  left: 10px;
+  top: 26px;
+}
+
+.line::after {
+  left: 9px;
+  bottom: 5px;
+}
+
+
