@@ -12,6 +12,9 @@
  - [x] Users should be able to add nested fields to object type.
  - [x] There should be a save button which console the updated data.(trying to display as javascript object , little bit diffcult , if fails i will display the state directly)
 
+# Extra feature
+
+- exit the edit mode of input using enter or esc key
 
 
 
