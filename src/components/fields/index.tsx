@@ -4,7 +4,7 @@ import { typesOfData } from "../../constant";
 import Field from "../field";
 import clone from "just-clone";
 import React from "react";
-import { fieldType } from "../../types"; 
+import { fieldType } from "../../types";
 
 function transformObject(obj: fieldType) {
   const result: any = {};
@@ -64,9 +64,13 @@ const Fields = () => {
 
   const deleteField = (id: string) => {
     let newSchema = clone(schema);
+    let parentId = newSchema[id].parentId;
     delete newSchema[id];
+    if (parentId)
+      newSchema[parentId].childIds = newSchema[parentId].childIds.filter(
+        (childId) => childId !== id
+      );
     setSchema(newSchema);
-    // improve delete childId from parent
   };
 
   const updateField = (id: string, data: any) => {
